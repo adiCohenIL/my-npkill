@@ -13,10 +13,19 @@
         name: "{{ image_name }}"
         path: ..
         state: build
+
+    - name: set docker cmd
+      set_fact:
+         npkill_cmd: "{% if volume is defined %} npkill -d {{ volume }}{% else %}npkill{% endif %}"
+
+    - debug:
+        var: npkill_cmd
+  
     - name: deploy npkill container
       docker_container:
         name: "{{ container_name }}"
         image: "{{  image_name }}"
         devices: "{{ volume| default(omit)}}"
+        command: "{{ npkill_cmd }}"
         recreate: true
         state: present
