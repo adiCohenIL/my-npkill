@@ -13,7 +13,6 @@ github-oauth:0.32
 github-pullrequest:0.2.5
 github:1.29.5
 github-scm-trait-commit-skip:0.4.0
-gitlab-plugin:1.5.12
 git-server:1.7
 pipeline-github-lib:1.0
 groovy:2.2
@@ -32,3 +31,4 @@ token-macro:2.8
 trilead-api:1.0.5 
 workflow-scm-step:2.9
 workflow-step-api:2.22
+workflow-aggregator:2.6
