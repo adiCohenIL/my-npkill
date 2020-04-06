@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+	    registry = "adicohenIL/npkill-image"
+    }
     agent {
         docker {
             image 'node:10-alpine' 
@@ -14,6 +17,13 @@ pipeline {
         stage('test') {
             steps {
                 sh 'npm test'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+        	script {
+                   docker.build registry + ":$BUILD_NUMBER"
+		}
             }
         }
     }
