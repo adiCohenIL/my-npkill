@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars:
+    image_name: npkill_img
+    container_name: npkill_container
+  tasks:
+    - name: install dockery package
+      pip: 
+        name: docker
+    - name: Build npkill Docker image from Dockerfile
+      docker_image:
+        name: "{{ image_name }}"
+        path: ..
+        state: build
+    - name: deploy npkill container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{  image_name }}"
+        devices: "{{ volume| default(omit)}}"
+        recreate: true
+        state: present

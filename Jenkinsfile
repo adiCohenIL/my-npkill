@@ -16,9 +16,5 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('Dockerize') {
-               sh  "docker build -t npkill:$BUILD_NUMBER ."
-            }
-        }
     }
 }
