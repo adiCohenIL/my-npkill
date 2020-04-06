@@ -21,9 +21,7 @@ pipeline {
         }
         stage('Dockerize') {
             steps {
-        	script {
                    docker.build registry + ":$BUILD_NUMBER"
-		}
             }
         }
     }
