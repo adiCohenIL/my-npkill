@@ -6,10 +6,14 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
-                sh 'pwd'
-                sh 'npm install' 
+                sh 'npm install'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'npm test'
             }
         }
     }
